@@ -1,0 +1,21 @@
+version: '3.7'
+networks:
+  payara-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.96.0/20
+services:
+  payara-server:
+    image: payara/server-full:5.2022.2-jdk11
+    networks:
+      payara-network:
+        ipv4_address: 192.168.96.2
+    hostname: payara5
+    container_name: payara5
+    ports:
+      - 8080:8080
+      - 4848:4848
+      - 8181:8181
+      - 9009:9009

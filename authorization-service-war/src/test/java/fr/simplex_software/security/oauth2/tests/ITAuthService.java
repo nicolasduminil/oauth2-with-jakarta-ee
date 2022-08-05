@@ -28,7 +28,7 @@ public class ITAuthService
   private URL base;
 
   @BeforeEach
-  public void init()
+  public void beforeEach()
   {
     webClient = new WebClient();
   }
@@ -48,7 +48,9 @@ public class ITAuthService
       .addClass(Callback.class)
       .addClass(SecuredPage.class)
       .addClass(UnsecuredPage.class)
-      .addAsLibraries(Maven.resolver().resolve("org.apache.commons:commons-lang3:3.12.0").withTransitivity().asFile())
+      .addAsLibraries(
+        Maven.resolver().resolve("org.apache.commons:commons-lang3:3.12.0")
+          .withTransitivity().asFile())
       .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
   }
 
@@ -57,7 +59,8 @@ public class ITAuthService
   @RunAsClient
   public void testGetUnsecuredPageShouldSucceed() throws IOException
   {
-    String result = ((TextPage) webClient.getPage(base + "unsecured")).getContent();
+    String result =
+      ((TextPage) webClient.getPage(base + "unsecured")).getContent();
     assertThat(result).isEqualTo("This is an unsecured web page");
   }
 
@@ -75,8 +78,9 @@ public class ITAuthService
   @Test
   @Order(30)
   @RunAsClient
-  public void testGetSecuredPageShouldFail() throws IOException
+  public void testGetSecuredPageShouldFail()
   {
-    assertThrows(FailingHttpStatusCodeException.class, ()-> anotherWebClient.getPage(base + "secured"));
+    assertThrows(FailingHttpStatusCodeException.class,
+      () -> anotherWebClient.getPage(base + "secured"));
   }
 }

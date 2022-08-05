@@ -7,6 +7,7 @@
   <artifactId>authorization-service</artifactId>
   <version>1.0-SNAPSHOT</version>
   <modules>
+    <module>platform</module>
     <module>authorization-service-war</module>
   </modules>
   <packaging>pom</packaging>
@@ -154,6 +155,21 @@
             <attachClasses>true</attachClasses>
             <failOnMissingWebXml>false</failOnMissingWebXml>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>com.dkanejs.maven.plugins</groupId>
+          <artifactId>docker-compose-maven-plugin</artifactId>
+          <version>2.5.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>keytool-maven-plugin</artifactId>
+          <version>1.6</version>
         </plugin>
       </plugins>
     </pluginManagement>
