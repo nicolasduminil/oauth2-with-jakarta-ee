@@ -1,0 +1,1 @@
+This project demonstrates how to secure Jakarta EE components with Payara Server 5 and its implementation of OAuth 2.0. The detailed documentation might be found [here](https://app.gitbook.com/s/Tlh8yrjtUlrGLrqwWbfW/).
